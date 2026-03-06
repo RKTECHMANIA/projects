@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RK Techmania | Projects</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:linear-gradient(120deg,#020617,#020617,#0f172a);
+color:#e2e8f0;
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#020617;
+height:100vh;
+padding:20px;
+border-right:1px solid #1e293b;
+position:fixed;
+}
+
+.sidebar h2{
+color:#38bdf8;
+}
+
+.sidebar a{
+display:block;
+color:#94a3b8;
+text-decoration:none;
+padding:10px;
+margin:5px 0;
+border-radius:6px;
+}
+
+.sidebar a:hover{
+background:#1e293b;
+color:white;
+}
+
+/* MAIN AREA */
+
+.main{
+margin-left:240px;
+padding:30px;
+width:100%;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+input,select{
+padding:10px;
+border-radius:6px;
+border:none;
+background:#1e293b;
+color:white;
+}
+
+/* BUTTON */
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:6px;
+background:#38bdf8;
+color:black;
+font-weight:600;
+cursor:pointer;
+}
+
+button:hover{
+background:#0ea5e9;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+gap:20px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(2,6,23,0.8);
+padding:20px;
+border-radius:12px;
+border:1px solid #1e293b;
+transition:0.25s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px #38bdf8;
+}
+
+.card h3{
+margin-top:0;
+color:#38bdf8;
+}
+
+.tag{
+background:#1e293b;
+padding:4px 8px;
+border-radius:4px;
+font-size:12px;
+}
+
+/* TRENDING */
+
+.trending{
+margin-top:40px;
+}
+
+.trend-card{
+background:#020617;
+padding:15px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #1e293b;
+}
+
+/* PREVIEW */
+
+.preview{
+background:#020617;
+padding:25px;
+margin-top:30px;
+border-radius:10px;
+border:1px solid #1e293b;
+}
+
+/* COMMENT */
+
+.comment{
+background:#1e293b;
+padding:8px;
+margin:5px 0;
+border-radius:5px;
+font-family:'JetBrains Mono',monospace;
+}
+
+.upload{
+margin-bottom:30px;
+background:#020617;
+padding:20px;
+border-radius:10px;
+border:1px solid #1e293b;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Rk Techmania</h2>
+
+<a href="#">Dashboard</a>
+<a href="#">Projects</a>
+<a href="#">Trending</a>
+<a href="#">Upload</a>
+<a href="#">Settings</a>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<h1>Developer Projects</h1>
+
+<div>
+
+<input id="search" placeholder="Search projects">
+
+<select id="filter" onchange="loadProjects()">
+<option value="">All</option>
+<option>HTML</option>
+<option>Python</option>
+<option>C</option>
+<option>C++</option>
+<option>Games</option>
+<option>Tools</option>
+</select>
+
+<button onclick="search()">Search</button>
+
+</div>
+
+</div>
+
+<div class="upload">
+
+<h3>Upload Project</h3>
+
+<input id="name" placeholder="Project Name">
+
+<select id="category">
+<option>HTML</option>
+<option>Python</option>
+<option>C</option>
+<option>C++</option>
+<option>Games</option>
+<option>Tools</option>
+</select>
+
+<input type="file" id="file">
+
+<button onclick="upload()">Upload</button>
+
+</div>
+
+<div class="grid" id="projects"></div>
+
+<div class="trending">
+
+<h2>🔥 Trending Projects</h2>
+
+<div id="trending"></div>
+
+</div>
+
+<div id="preview"></div>
+
+</div>
+
+<script>
+
+let projects=JSON.parse(localStorage.getItem("projects")) || [];
+
+function save(){
+localStorage.setItem("projects",JSON.stringify(projects));
+}
+
+function upload(){
+
+let name=document.getElementById("name").value;
+let cat=document.getElementById("category").value;
+let file=document.getElementById("file").files[0];
+
+if(!name || !file){
+alert("Enter name and select file");
+return;
+}
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+let project={
+id:Date.now(),
+name:name,
+category:cat,
+file:e.target.result,
+stars:0,
+comments:[]
+};
+
+projects.push(project);
+
+save();
+
+loadProjects();
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+function loadProjects(){
+
+let grid=document.getElementById("projects");
+
+grid.innerHTML="";
+
+let cat=document.getElementById("filter").value;
+
+projects.forEach(p=>{
+
+if(cat && p.category!=cat) return;
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<h3>${p.name}</h3>
+
+<span class="tag">${p.category}</span>
+
+<p>⭐ ${p.stars}</p>
+
+<button onclick="openProject(${p.id})">View</button>
+
+</div>
+
+`;
+
+});
+
+loadTrending();
+
+}
+
+function loadTrending(){
+
+let t=document.getElementById("trending");
+
+t.innerHTML="";
+
+let sorted=[...projects].sort((a,b)=>b.stars-a.stars).slice(0,5);
+
+sorted.forEach(p=>{
+
+t.innerHTML+=`
+
+<div class="trend-card">
+
+<b>${p.name}</b> ⭐ ${p.stars}
+
+</div>
+
+`;
+
+});
+
+}
+
+function search(){
+
+let q=document.getElementById("search").value.toLowerCase();
+
+let grid=document.getElementById("projects");
+
+grid.innerHTML="";
+
+projects.forEach(p=>{
+
+if(p.name.toLowerCase().includes(q)){
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<h3>${p.name}</h3>
+
+<span class="tag">${p.category}</span>
+
+<p>⭐ ${p.stars}</p>
+
+<button onclick="openProject(${p.id})">View</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+}
+
+function openProject(id){
+
+let p=projects.find(x=>x.id==id);
+
+let preview=document.getElementById("preview");
+
+preview.innerHTML=`
+
+<div class="preview">
+
+<h2>${p.name}</h2>
+
+<p>Category: ${p.category}</p>
+
+<a download="${p.name}.zip" href="${p.file}">
+<button>Download Project</button>
+</a>
+
+<br><br>
+
+<button onclick="star(${p.id})">⭐ Star</button>
+
+<p>${p.stars} Stars</p>
+
+<h3>Comments</h3>
+
+<input id="commentText">
+
+<button onclick="comment(${p.id})">Post</button>
+
+<div id="comments"></div>
+
+</div>
+
+`;
+
+renderComments(p);
+
+}
+
+function star(id){
+
+let p=projects.find(x=>x.id==id);
+
+p.stars++;
+
+save();
+
+openProject(id);
+
+loadProjects();
+
+}
+
+function comment(id){
+
+let text=document.getElementById("commentText").value;
+
+if(!text) return;
+
+let p=projects.find(x=>x.id==id);
+
+p.comments.push(text);
+
+save();
+
+openProject(id);
+
+}
+
+function renderComments(p){
+
+let c=document.getElementById("comments");
+
+c.innerHTML="";
+
+p.comments.forEach(x=>{
+
+c.innerHTML+=`<div class="comment">${x}</div>`;
+
+});
+
+}
+
+loadProjects();
+
+</script>
+
+</body>
+</html>
