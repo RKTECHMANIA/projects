@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps & Games - RK Techmania</title>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body{
+  color:white;
+  background: linear-gradient(-45deg,#0f2027,#2c5364,#1a2980,#26d0ce);
+  background-size:400% 400%;
+  animation:move 10s infinite;
+}
+@keyframes move{
+  50%{background-position:100% 50%;}
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+.logo span{ color:#00eaff; }
+
+.navlist{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+.navlist a{
+  color:white;
+  text-decoration:none;
+}
+.navlist a:hover{
+  color:#00eaff;
+}
+
+/* COMING SOON SECTION */
+.coming{
+  height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.coming h1{
+  font-size:50px;
+  color:#00eaff;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px #00eaff; }
+  to{ text-shadow:0 0 25px #00eaff,0 0 40px #00eaff; }
+}
+
+.coming p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* BUTTONS */
+.btn{
+  margin-top:20px;
+  padding:10px 20px;
+  background:#00eaff;
+  color:black;
+  border-radius:20px;
+  text-decoration:none;
+  transition:0.3s;
+}
+.btn:hover{
+  transform:scale(1.1);
+}
+
+/* FOOTER */
+.site-footer{
+  padding:50px 20px 20px;
+  background:rgba(0,0,0,0.2);
+  backdrop-filter:blur(10px);
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.footer-title span{ color:#00eaff; }
+
+.footer-col ul{
+  list-style:none;
+}
+.footer-col li{
+  margin:8px 0;
+}
+.footer-col a{
+  color:white;
+  text-decoration:none;
+}
+.footer-col a:hover{
+  color:#00eaff;
+}
+
+.footer-social{
+  margin-top:10px;
+  display:flex;
+  gap:10px;
+}
+.footer-social a{
+  padding:5px 10px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  opacity:0.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  header{
+    flex-direction:column;
+    gap:10px;
+  }
+  .footer-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><span>RK</span>TECHMANIA</div>
+
+  <ul class="navlist">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</header>
+
+<!-- COMING SOON -->
+<section class="coming">
+  <h1>🚀 Coming Soon</h1>
+  <p>We are building something amazing for Apps & Games.<br>
+  Stay tuned for powerful and interactive projects!</p>
+
+  <a href="index.html" class="btn">⬅ Back to Home</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-col">
+      <h3 class="footer-title">RK<span>TECH</span>MANIA</h3>
+      <p>
+        Providing modern digital solutions including website development,
+        computer services, and creative tech innovations.
+      </p>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/rishabharora1999/">Instagram</a>
+        <a href="https://github.com/rishab226">GitHub</a>
+        <a href="https://www.youtube.com/@Rishabh727">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Video Editing</a></li>
+        <li><a href="#">IT Solutions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>📞 +91 964xxxx427</li>
+        <li>✉ rktechmania@gmail.com</li>
+        <li>📍 India</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 RKTECHMANIA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

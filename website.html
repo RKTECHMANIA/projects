@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Website Projects</title>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
+/* BACKGROUND (UNCHANGED) */
+body{
+  color:white;
+  background: linear-gradient(-45deg,#0f2027,#2c5364,#1a2980,#26d0ce);
+  background-size:400% 400%;
+  animation:move 10s infinite;
+}
+@keyframes move{
+  50%{background-position:100% 50%;}
+}
+
+/* CONTAINER */
+.container{
+  padding:60px 40px;
+  max-width:1300px;
+  margin:auto;
+}
+
+/* TITLE */
+h1{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:36px;
+}
+
+/* GRID (4 IN ROW) */
+.projects{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:25px;
+}
+
+/* CARD */
+.project{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(15px);
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+  display:flex;
+  flex-direction:column;
+}
+.project:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+
+/* IMAGE */
+.project img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.project-content{
+  padding:15px;
+  flex:1;
+}
+.project h2{
+  font-size:18px;
+  margin-bottom:10px;
+}
+.project p{
+  font-size:13px;
+  opacity:0.9;
+  margin-bottom:10px;
+}
+.project ul{
+  font-size:13px;
+  padding-left:18px;
+  margin-bottom:10px;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 15px;
+  background:#00eaff;
+  color:black;
+  text-decoration:none;
+  border-radius:20px;
+  font-size:13px;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:block;
+  margin:50px auto 0;
+  text-align:center;
+  width:max-content;
+}
+
+/* FOOTER */
+.site-footer {
+  margin-top: 60px;
+  padding: 50px 20px 20px;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-title span {
+  color: #00eaff;
+}
+
+.footer-about {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin: 8px 0;
+}
+
+.footer-col a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.footer-col a:hover {
+  color: #00eaff;
+}
+
+.footer-social {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.footer-social a {
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .projects{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .projects{
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Website Development Projects</h1>
+
+<div class="projects">
+
+<!-- KRISHNA -->
+<div class="project">
+  <img src="krishna.png" class="logo-img">
+  <div class="project-content">
+    <h2>Krishna E-Rickshaw</h2>
+    <p><b>Overview:</b> Business website for electric vehicles.</p>
+
+    <ul>
+      <li>Responsive design</li>
+      <li>Product showcase</li>
+      <li>Fast loading</li>
+    </ul>
+
+    <p><b>Challenge:</b> Mobile UI & performance</p>
+
+    <a href="https://www.krishnaerickshaw.com/" target="_blank" class="btn">Visit</a>
+  </div>
+</div>
+
+<!-- VANDE -->
+<div class="project">
+  <img src="Vande.jpg" class="logo-img">
+  <div class="project-content">
+    <h2>Vande Mataram</h2>
+    <p><b>Overview:</b> Modern EV business website.</p>
+
+    <ul>
+      <li>SEO friendly</li>
+      <li>Clean UI</li>
+      <li>Optimized speed</li>
+    </ul>
+
+    <p><b>Challenge:</b> Layout responsiveness</p>
+
+    <a href="https://www.vandemataramerickshaw.com/" target="_blank" class="btn">Visit</a>
+  </div>
+</div>
+
+<!-- DUPLICATE FOR GRID LOOK -->
+<div class="project">
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+  <div class="project-content">
+    <h2>Business Website</h2>
+    <p>Professional corporate design.</p>
+    <a href="#" class="btn">Visit</a>
+  </div>
+</div>
+
+<div class="project">
+  <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07">
+  <div class="project-content">
+    <h2>Creative Design</h2>
+    <p>Modern UI/UX showcase.</p>
+    <a href="#" class="btn">Visit</a>
+  </div>
+</div>
+
+</div>
+
+<a href="index.html" class="btn back-btn">⬅ Back to Home</a>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-col">
+      <h3 class="footer-title">RK<span>TECH</span>MANIA</h3>
+      <p class="footer-about">
+        Providing modern digital solutions including website development,
+        computer services, and creative tech innovations.
+      </p>
+
+      <div class="footer-social">
+        <a href="https://www.instagram.com/rishabharora1999/">Instagram</a>
+        <a href="https://github.com/rishab226">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="https://www.youtube.com/@Rishabh727">YouTube</a>
+        <a href="https://www.facebook.com/rishab.arora.520562">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="https://rktechmania.github.io/RKTECHMANIA/index.html">Home</a></li>
+        <li><a href="https://rktechmania.github.io/RKTECHMANIA/about.html">About</a></li>
+        <li><a href="https://rktechmania.github.io/RKTECHMANIA/services.html">Services</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Website Development</a></li>
+        <li><a href="#">Video Editing</a></li>
+        <li><a href="#">IT Solutions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>📞 +91 964xxxx427</li>
+        <li>✉ rktechmania@gmail.com</li>
+        <li>📍 India</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 RKTECHMANIA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
